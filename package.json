@@ -1,0 +1,18 @@
+{
+  "name": "words-app",
+  "version": "1.0.0",
+  "description": "A dumb NodeJS app to test docker and clustering",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.10",
+    "mongoose-simple-random": "^0.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin McGill",
+  "license": "MIT"
+}
