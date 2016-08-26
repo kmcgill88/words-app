@@ -1,7 +1,7 @@
 {
   "name": "words-app",
   "version": "1.0.0",
-  "description": "A dumb NodeJS app to test docker and clustering",
+  "description": "A dumb NodeJS app to test docker, clustering and mongodb",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.15.2",
