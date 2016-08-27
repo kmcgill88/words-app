@@ -6,8 +6,7 @@ var bodyParser = require('body-parser');
 var random = require('mongoose-simple-random');
 
 
-// for parsing application/json
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 
@@ -47,7 +46,6 @@ app.get('/', function (req, res) {
       response += "_" + result.word;
       console.log(response); // 1 element
 
-
       if(response.length > 0) {
         res.status(200).send(response);
       } else {
@@ -55,7 +53,7 @@ app.get('/', function (req, res) {
       }
     }
   });
-  
+
 });
 
 app.post('/noun', function (req, res) {
