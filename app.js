@@ -25,7 +25,7 @@ adjectiveSchema.plugin(random);
 
 
 // DB
-var dbConnection = (process.env.DB_ENDPOINT) ? process.env.DB_ENDPOINT : 'mongodb://localhost:27017/words-app'
+var dbConnection = (process.env.DB_ENDPOINT) ? 'mongodb://'+process.env.DB_ENDPOINT+':27017/wordsapp' : 'mongodb://localhost:27017/wordsapp'
 mongoose.connect(dbConnection);
 
 
