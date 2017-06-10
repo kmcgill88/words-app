@@ -24,36 +24,33 @@ var adjectiveSchema = mongoose.Schema({
 adjectiveSchema.plugin(random);
 
 
-// DB
+//DB
 var dbConnection = (process.env.DB_ENDPOINT) ? 'mongodb://'+process.env.DB_ENDPOINT+':27017/wordsapp' : 'mongodb://localhost:27017/wordsapp'
 mongoose.connect(dbConnection);
 
 
 app.get('/', function (req, res) {
-
- var response = "";
-
   // Find a single random document
   Adjective.findOneRandom(function(err, result) {
     if (!err) {
-      response = result.word;
-      //console.log(response); // 1 element
+      var response = result.word;
+      Noun.findOneRandom(function(err, result) {
+        if (!err) {
+          response += "_" + result.word;
+          console.log(response); // 1 element
+          if(response.length > 0) {
+            res.status(200).send(response);
+          } else {
+            res.status(500).send("Failed to get valid response!");
+          }
+        } else {
+          res.status(500).send("Failed to get Noun!");
+        }
+      });
+    } else {
+      res.status(500).send("Failed to get Adjective!");
     }
   });
-
-  Noun.findOneRandom(function(err, result) {
-    if (!err) {
-      response += "_" + result.word;
-      console.log(response); // 1 element
-
-      if(response.length > 0) {
-        res.status(200).send(response);
-      } else {
-        res.status(500).send("Some thing bad happened!");
-      }
-    }
-  });
-
 });
 
 app.post('/noun', function (req, res) {
